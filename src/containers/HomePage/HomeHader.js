@@ -3,8 +3,18 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import logo from '../../assets/logo.svg';
+import { LANGUAGES } from '../../utils';
+import { changeLanguageApp } from '../../store/actions';
 class HomeHeader extends Component {
+    changeLanguage = (language) => {
+        // alert(language)
+        this.props.changeLanguageAppRedux(language);
+        //fire redux event : actions
+    };
     render() {
+        console.log('check props', this.props);
+        let language = this.props.language;
+
         return (
             <React.Fragment>
                 <div className="home-header-container">
@@ -62,8 +72,12 @@ class HomeHeader extends Component {
                                 <i className="fas fa-question-circle"></i>
                                 <FormattedMessage id="homeheader.support" />
                             </div>
-                            <div className="language-vi">Việt Nam</div>
-                            <div className="language-en">English</div>
+                            <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}>
+                                <span onClick={() => this.changeLanguage(LANGUAGES.VI)}>Việt Nam</span>
+                            </div>
+                            <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}>
+                                <span onClick={() => this.changeLanguage(LANGUAGES.EN)}>English</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,6 +154,7 @@ class HomeHeader extends Component {
 
 // Import redux vao 2 ham naymapStateToProps mapDispatchToProps
 const mapStateToProps = (state) => {
+    // hàm này map state của redux vào props của component react này
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
@@ -147,7 +162,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        // cachs fire 1 event
+        // truy cap den ham changeLanguageAppRedux thong qua props
+        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
