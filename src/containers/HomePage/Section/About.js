@@ -14,9 +14,9 @@ class About extends Component {
                             height="400px"
                             src="https://www.youtube.com/embed/rgDssjm51i4"
                             title="YouTube video player"
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
+                            allowFullscreen
                         ></iframe>
                     </div>
                     <div className="content-right">
