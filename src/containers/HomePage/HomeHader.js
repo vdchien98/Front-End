@@ -157,6 +157,7 @@ const mapStateToProps = (state) => {
     // hàm này map state của redux vào props của component react này
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language,
     };
 };
