@@ -90,7 +90,7 @@ class UserRedux extends Component {
     handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
-        // console.log('check file ảnh ', file);
+        console.log('check file ảnh ', file);
         if (file) {
             let base64 = await CommonUtils.getBase64(file);
             let objectUrl = URL.createObjectURL(file);
