@@ -6,6 +6,8 @@ import {
     deleteUserService,
     editUserService,
     getTopDoctorHomeService,
+    getAllDoctors,
+    saveDetailDoctorService,
 } from '../../services/useService';
 import { toast } from 'react-toastify';
 
@@ -217,6 +219,58 @@ export const fetchTopDoctor = () => {
             console.log('FETCH_TOP_DOCTORS_FAILDED', e);
             dispatch({
                 type: actionTypes.FETCH_TOP_DOCTORS_FAILDED,
+            });
+        }
+    };
+};
+
+export const fetchAllDoctors = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllDoctors();
+            // console.log('dang chien check res', res);
+            // console.log(res);
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+                    dataDr: res.data,
+                });
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTORS_FAILDED,
+                });
+            }
+        } catch (e) {
+            console.log('FETCH_ALL_DOCTORS_FAILDED', e);
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTORS_FAILDED,
+            });
+        }
+    };
+};
+
+export const saveDetailDoctor = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await saveDetailDoctorService(data);
+            // console.log('dang chien check res', res);
+            // console.log(res);
+            if (res && res.errCode === 0) {
+                toast.success('Save Infordetail the  doctor succeed!!');
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+                });
+            } else {
+                toast.error('Save Infordetail the  doctor error!!');
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_FAILDED,
+                });
+            }
+        } catch (e) {
+            toast.error('Save Infordetail the  doctor error!!');
+            console.log('SAVE_DETAIL_DOCTOR_FAILDED', e);
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAILDED,
             });
         }
     };
