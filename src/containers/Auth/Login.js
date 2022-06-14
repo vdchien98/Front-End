@@ -64,6 +64,12 @@ class Login extends Component {
             isShowPassword: !this.state.isShowPassword,
         });
     };
+    handleKeyDown = (event) => {
+        console.log(event);
+        if (event.key === 'Enter' || event.Code === 13) {
+            this.handleLogin();
+        }
+    };
     render() {
         //JSX
 
@@ -95,6 +101,7 @@ class Login extends Component {
                                     onChange={(event) => {
                                         this.handleOnChangePassword(event);
                                     }}
+                                    onKeyDown={(event) => this.handleKeyDown(event)} // Đây là sự kiện ấn enter để đăng nhập
                                 />
                                 <span
                                     onClick={() => {
