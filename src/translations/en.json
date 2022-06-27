@@ -79,7 +79,13 @@
             "select-doctor": "Choose a doctor",
             "intro": "Introduction information",
             "add": "Create Infor",
-            "save": "Save Infor"
+            "save": "Save Infor",
+            "price": "Price of medical examination",
+            "payment": "Payment methods",
+            "province": "Province ",
+            "nameClinic": "Clinic name",
+            "addressClinic": "Clinic address ",
+            "note": "Note"
         }
     }
 }
