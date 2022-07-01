@@ -17,18 +17,21 @@
         }
     }
     .content-down {
-        .short-infor{
-            span {
+        .short-infor {
+            .detail {
                 cursor: pointer;
-                color:rgb(38,160,231)
+                color: rgb(38, 160, 231);
+            }
+            .currency {
+                margin: 0 10px;
             }
         }
         .title-price {
-            margin-bottom:10px;
+            margin-bottom: 10px;
         }
         .detail-infor {
-            border:1px solid #ddd;
-            padding:5px;
+            border: 1px solid #ddd;
+            padding: 5px;
             background-color: #f8f8f8;
             .price {
                 padding-bottom: 5px;
@@ -36,19 +39,19 @@
                     float: right;
                 }
             }
-            .note {}
+            .note {
+            }
         }
         .payment {
-            border:1px solid #ddd;
-            padding:5px;
-            background-color: #eee
-
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: #eee;
         }
         .hide-price {
-            margin-top:10px;
+            margin-top: 10px;
             span {
                 cursor: pointer;
-                color:rgb(38,160,231)
+                color: rgb(38, 160, 231);
             }
         }
     }

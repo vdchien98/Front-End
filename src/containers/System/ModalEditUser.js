@@ -63,7 +63,7 @@ class ModalEditUser extends Component {
         }
     };
     render() {
-        console.log('check props from parent', this.props);
+        // console.log('check props from parent', this.props);
         return (
             <Modal
                 isOpen={this.props.isOpen}
