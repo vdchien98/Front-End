@@ -1,8 +1,10 @@
 .booking-modal-container {
+    padding-top: 50px;
     .booking-modal-content {
-        height: 500px;
+        // height: 450px;
         display: flex;
         flex-direction: column;
+
         .booking-modal-header {
             padding: 10px;
             border-bottom: 1px solid #ccc;
