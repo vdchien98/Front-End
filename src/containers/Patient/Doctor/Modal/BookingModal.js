@@ -47,6 +47,8 @@ class BookingModal extends Component {
                             <ProfileDoctor
                                 // djskds
                                 doctorId={doctorId}
+                                isShowDescriptionDoctor={false}
+                                dataTime={dataTime}
                             />
                         </div>
 
