@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 import './ProfileDoctor.scss';
-import NumberFormat from 'react-number-format';
 import { getProfileDoctorById } from '../../../services/useService';
+import { LANGUAGES } from '../../../utils';
+import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 import moment from 'moment';
 
