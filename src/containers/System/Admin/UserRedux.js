@@ -98,7 +98,6 @@ class UserRedux extends Component {
                 previewImgURL: objectUrl,
                 avatar: base64,
             });
-            // console.log('check file ảnh ssssssss', objectUrl);
         }
     };
 
