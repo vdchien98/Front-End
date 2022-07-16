@@ -6,7 +6,15 @@ import logo from '../../assets/logo.svg';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
 import { withRouter } from 'react-router';
+import { searchDoctor } from '../../services/useService';
+
 class HomeHeader extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataDoctors: [],
+        };
+    }
     changeLanguage = (language) => {
         // alert(language)
         this.props.changeLanguageAppRedux(language);
@@ -17,9 +25,18 @@ class HomeHeader extends Component {
             this.props.history.push(`/home`);
         }
     };
+    changeSearch = async (event) => {
+        let res = await searchDoctor({ search: event.target.value });
+        if (res && res.errCode === 0) {
+            this.setState({
+                dataDoctors: res.data ? res.data : [],
+            });
+        }
+    };
     render() {
-        console.log('check props', this.props);
         let language = this.props.language;
+        let { dataDoctors } = this.state;
+        console.log(dataDoctors);
 
         return (
             <React.Fragment>
@@ -98,7 +115,13 @@ class HomeHeader extends Component {
                             </div>
                             <div className="search">
                                 <i className="fas fa-search"></i>
-                                <input type="text" placeholder="Tìm bênh viện " aria-label="" aria-describedby="basic-addon1" />
+                                <input
+                                    type="text"
+                                    placeholder="Tìm bênh viện "
+                                    aria-label=""
+                                    aria-describedby="basic-addon1"
+                                    onChange={this.changeSearch}
+                                />
                             </div>
                         </div>
                         <div className="content-down">
