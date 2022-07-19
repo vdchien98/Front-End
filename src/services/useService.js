@@ -94,6 +94,10 @@ const getAllPatientForDoctor = (data) => {
 const searchDoctor = (data) => {
     return axios.post('/api/search-doctor', data);
 };
+
+const postSendRemedy = (data) => {
+    return axios.post('/api/send-remedy', data);
+};
 export {
     handleLoginApi,
     getAllUsers,
@@ -118,5 +122,6 @@ export {
     getAllClinic,
     getAllDetailClinicById,
     getAllPatientForDoctor,
+    postSendRemedy,
     searchDoctor,
 };
