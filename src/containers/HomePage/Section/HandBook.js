@@ -11,7 +11,7 @@ class HandBook extends Component {
                 <div className="section-container ">
                     <div className="section-header">
                         <span className="title-section">Cẩm Nang </span>
-                        <button className=" btn-section">Xem Thêm </button>
+                        {/* <button className=" btn-section">Xem Thêm </button> */}
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>
@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
+// export default connect(mapStateToProps, mapDispatchToProps)(HandBook);

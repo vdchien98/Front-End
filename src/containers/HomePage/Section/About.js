@@ -6,13 +6,13 @@ class About extends Component {
     render() {
         return (
             <div className="section-share section-about">
-                <div className="section-about-header">Truyền Thông nói về Đăng Chiến</div>
+                <div className="section-about-header">Truyền Thông nói về Sức Khỏe</div>
                 <div className="section-about-content">
                     <div className="content-left">
                         <iframe
                             width="100%"
                             height="400px"
-                            src="https://www.youtube.com/embed/rgDssjm51i4"
+                            src="https://youtu.be/tvHEfX0rU2c"
                             title="YouTube video player"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -20,11 +20,14 @@ class About extends Component {
                         ></iframe>
                     </div>
                     <div className="content-right">
+                        <h4> Thói quen sống lành mạnh cần có hằng ngày </h4>
                         <p>
-                            Thế là hết! Anh Bé đi tù tháng 6 năm 1975, sau đó tôi chỉ nhận được ba lá thư của anh. Lá cuối cùng đề tháng 2, 1976, gởi
-                            từ trại Suối Máu, Biên Hòa. Sau đó, anh bặt tin. Tôi chờ đợi mòn mỏi, lên xuống trạm công an cả chục lần, hỏi gì họ cũng
-                            trả lời không biết. Cuối cùng, tôi nhất quyết làm đơn khiếu nại. Lúc đó, tôi và sáu đứa con - đứa lớn nhất mười một tuổi,
-                            đứa nhỏ nhất mới lên hai - đang nương náu trong một mảnh vườn hẻo lánh
+                            Lối sống lành mạnh không đơn giản chỉ là thỉnh thoảng ăn vài món salad hay đi bộ một đoạn ngắn vài tuần một lần. Mặt khác,
+                            tuy cần nhiều nỗ lực hơn để có lối sống lành mạnh, nhưng điều đó rất xứng đáng nếu bạn muốn duy trì sức khỏe. Để duy trì
+                            lối sống lành mạnh, bạn cần kiên trì chọn thực phẩm tốt cho sức khỏe, kết hợp thêm nhiều bài tập thể dục và hoạt động thể
+                            chất vào sinh hoạt hàng ngày, đồng thời giữ vệ sinh sạch sẽ. Ngoài ra, bạn cần tránh các thói quen không lành mạnh như ăn
+                            kiêng cấp tốc và ngủ không đủ giấc. Để cải thiện lối sống, bạn cần thay đổi một cách từ từ và một khi đã thực hiện được,
+                            sức khỏe của bạn sẽ tốt hơn
                         </p>
                     </div>
                 </div>

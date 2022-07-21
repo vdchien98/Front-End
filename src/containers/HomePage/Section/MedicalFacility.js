@@ -30,11 +30,11 @@ class MedicalFacility extends Component {
     render() {
         let { dataClinics } = this.state;
         return (
-            <div className="section-share section-medical-facility">
+            <div className="section-share section-medical-facility " id="facility">
                 <div className="section-container ">
                     <div className="section-header">
                         <span className="title-section">Cơ sở y tế nổi bật</span>
-                        <button className=" btn-section">Xem Thêm </button>
+                        {/* <button className=" btn-section">Xem Thêm </button> */}
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>

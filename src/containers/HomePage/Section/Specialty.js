@@ -30,17 +30,17 @@ class Specialty extends Component {
     render() {
         let { dataSpecialty } = this.state;
         return (
-            <div className="section-share section-specialty">
+            <div className="section-share section-specialty " id="speciality">
                 <div className="section-container ">
                     <div className="section-header">
                         <span className="title-section">
                             <FormattedMessage id="homepage.specialty-poplular" />
                             {/* */}
                         </span>
-                        <button className=" btn-section">
+                        {/* <button className=" btn-section">
                             <FormattedMessage id="homepage.more-infor" />
-                            {/* Xem Thêm */}
-                        </button>
+                            Xem Thêm
+                        </button> */}
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>

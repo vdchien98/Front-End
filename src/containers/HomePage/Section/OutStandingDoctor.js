@@ -39,15 +39,15 @@ class OutStandingDoctor extends Component {
         // console.log('dang chien check props', arrDoctors);
 
         return (
-            <div className="section-share section-outstanding-doctor">
+            <div className="section-share section-outstanding-doctor" id="doctor">
                 <div className="section-container ">
                     <div className="section-header">
                         <span className="title-section">
                             <FormattedMessage id="homepage.outstanding-doctor" />
                         </span>
-                        <button className=" btn-section">
+                        {/* <button className=" btn-section">
                             <FormattedMessage id="homepage.more-infor" />
-                        </button>
+                        </button> */}
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>

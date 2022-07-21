@@ -25,7 +25,6 @@ class HomeHeader extends Component {
 
     componentDidMount() {
         this.props.fetchAllDoctors();
-        // this.props.fetchAllScheduleTime();
     }
     changeLanguage = (language) => {
         // alert(language)
@@ -100,7 +99,9 @@ class HomeHeader extends Component {
                             <div className="child-content">
                                 <div>
                                     <b>
-                                        <FormattedMessage id="homeheader.speciality" />
+                                        <a href="#speciality">
+                                            <FormattedMessage id="homeheader.speciality" />
+                                        </a>
                                     </b>
                                 </div>
                                 <div className="subs-title">
@@ -110,7 +111,9 @@ class HomeHeader extends Component {
                             <div className="child-content">
                                 <div>
                                     <b>
-                                        <FormattedMessage id="homeheader.health-facility" />
+                                        <a href="#facility">
+                                            <FormattedMessage id="homeheader.health-facility" />
+                                        </a>
                                     </b>
                                 </div>
                                 <div className="subs-title">
@@ -120,7 +123,9 @@ class HomeHeader extends Component {
                             <div className="child-content">
                                 <div>
                                     <b>
-                                        <FormattedMessage id="homeheader.doctor" />
+                                        <a href="#doctor">
+                                            <FormattedMessage id="homeheader.doctor" />
+                                        </a>
                                     </b>
                                 </div>
                                 <div className="subs-title">
