@@ -7,13 +7,25 @@ import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
 import { withRouter } from 'react-router';
 import { searchDoctor } from '../../services/useService';
-
+import Select from 'react-select';
+import { saveBulkScheduleDoctor } from '../../services/useService';
+import * as actions from '../../store/actions';
 class HomeHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dataDoctors: [],
+            selectedDoctor: {},
+            listDoctors: [],
         };
+    }
+    // handleChange = (selectedOption) => {
+    //     this.setState({ selectedOption }, () => console.log(`Option selected:`, this.state.selectedOption));
+    // };
+
+    componentDidMount() {
+        this.props.fetchAllDoctors();
+        // this.props.fetchAllScheduleTime();
     }
     changeLanguage = (language) => {
         // alert(language)
@@ -33,10 +45,47 @@ class HomeHeader extends Component {
             });
         }
     };
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.allDoctors !== this.props.allDoctors) {
+            let dataSelect = this.buildDataInputSelect(this.props.allDoctors);
+            this.setState({
+                listDoctors: dataSelect,
+            });
+        }
+    }
+    buildDataInputSelect = (inputData) => {
+        let result = [];
+        let { language } = this.props;
+        if (inputData && inputData.length > 0) {
+            inputData.map((item, index) => {
+                let object = {};
+                let labelVi = `${item.lastName} ${item.firstName}`;
+                let labelEn = `${item.firstName} ${item.lastName}`;
+
+                object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+                object.value = item.id;
+                result.push(object);
+            });
+        }
+        return result;
+    };
+    handleChangeSelect = async (selectedOption) => {
+        this.setState({ selectedDoctor: selectedOption });
+    };
     render() {
         let language = this.props.language;
-        let { dataDoctors } = this.state;
-        console.log(dataDoctors);
+        // let { dataDoctors } = this.state;
+        // let { selectedOption } = this.state;
+        // console.log('check dataDoctors', dataDoctors);
+        // console.log('check selectedOption', selectedOption);
+
+        // const options = [
+        //     { value: 'chocolate', label: 'Chocolate' },
+        //     { value: 'strawberry', label: 'Strawberry' },
+        //     { value: 'vanilla', label: 'Vanilla' },
+        // ];
+
+        /* Simple example */
 
         return (
             <React.Fragment>
@@ -113,17 +162,30 @@ class HomeHeader extends Component {
                             <div className="title2">
                                 <FormattedMessage id="banner.title2" />
                             </div>
+                            <div className="title3">
+                                <FormattedMessage id="banner.title3" />
+                            </div>
                             <div className="search">
-                                <i className="fas fa-search"></i>
-                                <input
-                                    type="text"
-                                    placeholder="Tìm bênh viện "
-                                    aria-label=""
-                                    aria-describedby="basic-addon1"
-                                    onChange={this.changeSearch}
+                                <Select
+                                    value={this.state.selectedDoctor}
+                                    onChange={this.handleChangeSelect}
+                                    options={this.state.listDoctors}
+                                    className="searchDoctor"
                                 />
                             </div>
+
+                            {/* <div className="search">
+                                <i className="fas fa-search"></i>
+                            <input
+                                type="text"
+                                placeholder="Tìm bênh viện "
+                                aria-label=""
+                                aria-describedby="basic-addon1"
+                                onChange={this.changeSearch}
+                              />
+                             <div></div> */}
                         </div>
+                        {/* </div> */}
                         <div className="content-down">
                             <div className="options">
                                 <div className="option-child">
@@ -190,12 +252,14 @@ const mapStateToProps = (state) => {
         isLoggedIn: state.user.isLoggedIn,
         userInfo: state.user.userInfo,
         language: state.app.language,
+        allDoctors: state.admin.allDoctors,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         // cachs fire 1 event
+        fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
         // truy cap den ham changeLanguageAppRedux thong qua props
         changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
     };
