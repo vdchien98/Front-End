@@ -39,6 +39,7 @@ class DoctorExtrainfor extends Component {
     }
 
     showHideDetailInfor = (status) => {
+        console.log('dang chien check status09041998', status);
         this.setState({
             isShowDetailInfor: status,
         });

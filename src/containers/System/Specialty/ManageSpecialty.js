@@ -44,7 +44,7 @@ class ManageSpecialty extends Component {
     handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
-        console.log('check file ảnh ', file);
+        // console.log('check file ảnh ', file);
         if (file) {
             let base64 = await CommonUtils.getBase64(file);
 
@@ -68,7 +68,7 @@ class ManageSpecialty extends Component {
             toast.error('Somethings wrongs ....');
             console.log('>> Dang chien check res ', res);
         }
-        console.log('dang chien check state 789456', this.state);
+        // console.log('dang chien check state 789456', this.state);
     };
     render() {
         return (

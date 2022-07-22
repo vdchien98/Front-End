@@ -45,7 +45,7 @@ class Login extends Component {
             }
             if (data && data.errCode === 0) {
                 this.props.userLoginSuccess(data.user);
-                console.log('login suceeds');
+                // console.log('login suceeds');
             }
         } catch (e) {
             if (e.response) {
@@ -65,7 +65,7 @@ class Login extends Component {
         });
     };
     handleKeyDown = (event) => {
-        console.log(event);
+        // console.log(event);
         if (event.key === 'Enter' || event.Code === 13) {
             this.handleLogin();
         }

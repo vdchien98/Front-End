@@ -18,6 +18,9 @@ class DetailSpecialty extends Component {
             arrDoctorId: [],
             dataDetailSpecialty: {},
             listProvince: [],
+
+            // tạo xem thêm
+            isShowDetailInfor: false,
         };
     }
     async componentDidMount() {
@@ -92,17 +95,37 @@ class DetailSpecialty extends Component {
         }
     };
 
+    // tạo hàm xem thêm
+    showHideDetailInfor = (status) => {
+        this.setState({
+            isShowDetailInfor: !status,
+        });
+    };
     render() {
         let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state;
-        console.log('dang chien check state', this.state);
+        console.log('dang chien check state  09041998ccccccccccccccccccccc', this.state);
         let { language } = this.props;
+
+        // biến tạo hàm xem thêm
+        let { isShowDetailInfor, extraInfor } = this.state;
         return (
             <div className="detail-specialty-container">
                 <HomeHader />
                 <div className="detail-specialty-body">
                     <div className="description-specialty">
-                        {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty) && (
-                            <div dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML }}></div>
+                        <div className={isShowDetailInfor === false ? 'shortInfo' : 'MoreInfo'}>
+                            {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty) && (
+                                <div dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML }}></div>
+                            )}
+                        </div>
+                        {isShowDetailInfor === true ? (
+                            <div onClick={() => this.showHideDetailInfor(true)} className="Open-Close">
+                                Thu gon chi tiết
+                            </div>
+                        ) : (
+                            <div onClick={() => this.showHideDetailInfor(false)} className="Open-Close">
+                                Xem chi tiết
+                            </div>
                         )}
                     </div>
                     <div className="search-sp-doctor">

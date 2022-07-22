@@ -43,7 +43,7 @@ class VerifyEmail extends Component {
 
     render() {
         let { statusVrify, errCode } = this.state;
-        console.log('dang chien ckec verify emial ', this.state);
+        // console.log('dang chien ckec verify emial ', this.state);
         return (
             <>
                 <HomeHader />
