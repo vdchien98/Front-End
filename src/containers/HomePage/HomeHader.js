@@ -10,6 +10,8 @@ import { searchDoctor } from '../../services/useService';
 import Select from 'react-select';
 import { saveBulkScheduleDoctor } from '../../services/useService';
 import * as actions from '../../store/actions';
+import { Redirect } from 'react-router-dom';
+
 class HomeHeader extends Component {
     constructor(props) {
         super(props);
@@ -69,8 +71,10 @@ class HomeHeader extends Component {
         return result;
     };
     handleChangeSelect = async (selectedOption) => {
+        this.props.history.push('/detail-doctor/' + selectedOption.value);
         this.setState({ selectedDoctor: selectedOption });
     };
+
     render() {
         let language = this.props.language;
         // let { dataDoctors } = this.state;
@@ -174,8 +178,8 @@ class HomeHeader extends Component {
                                 <Select
                                     value={this.state.selectedDoctor}
                                     onChange={this.handleChangeSelect}
-                                    options={this.state.listDoctors}
                                     className="searchDoctor"
+                                    options={this.state.listDoctors}
                                 />
                             </div>
 
