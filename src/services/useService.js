@@ -76,6 +76,9 @@ const createNewSpecialty = (data) => {
 const getAllSpecialty = () => {
     return axios.get(`/api/get-specialty`);
 };
+const forgotPasswordApi = (data) => {
+    return axios.post(`/api/forgot-password`, data);
+};
 const getAllClinic = () => {
     return axios.get(`/api/get-clinic`);
 };
@@ -124,4 +127,5 @@ export {
     getAllPatientForDoctor,
     postSendRemedy,
     searchDoctor,
+    forgotPasswordApi,
 };

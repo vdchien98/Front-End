@@ -11,6 +11,7 @@ import Select from 'react-select';
 import { saveBulkScheduleDoctor } from '../../services/useService';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router-dom';
+import { getAllSpecialty } from '../../services/useService';
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -18,15 +19,24 @@ class HomeHeader extends Component {
         this.state = {
             dataDoctors: [],
             selectedDoctor: {},
-            listDoctors: [],
+            listData: [],
+            dataSpecialty: [],
         };
     }
     // handleChange = (selectedOption) => {
     //     this.setState({ selectedOption }, () => console.log(`Option selected:`, this.state.selectedOption));
     // };
 
-    componentDidMount() {
+    async componentDidMount() {
         this.props.fetchAllDoctors();
+        this.props.fetchAllClinics();
+        let res = await getAllSpecialty();
+        if (res && res.errCode === 0) {
+            let specialty = this.buildDataInputSelect(res.data ? res.data : [], 'specialty');
+            this.setState({
+                listData: [...this.state.listData, ...specialty],
+            });
+        }
     }
     changeLanguage = (language) => {
         // alert(language)
@@ -38,45 +48,52 @@ class HomeHeader extends Component {
             this.props.history.push(`/home`);
         }
     };
-    changeSearch = async (event) => {
-        let res = await searchDoctor({ search: event.target.value });
-        if (res && res.errCode === 0) {
-            this.setState({
-                dataDoctors: res.data ? res.data : [],
-            });
-        }
-    };
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.allDoctors !== this.props.allDoctors) {
-            let dataSelect = this.buildDataInputSelect(this.props.allDoctors);
+            let dataSelect = this.buildDataInputSelect(this.props.allDoctors, 'doctor');
             this.setState({
-                listDoctors: dataSelect,
+                listData: [...this.state.listData, ...dataSelect],
+            });
+        }
+
+        if (prevProps.clinics !== this.props.clinics) {
+            let dataSelect = this.buildDataInputSelect(this.props.clinics, 'clinic');
+            this.setState({
+                listData: [...this.state.listData, ...dataSelect],
             });
         }
     }
-    buildDataInputSelect = (inputData) => {
+    buildDataInputSelect = (inputData, type) => {
         let result = [];
         let { language } = this.props;
         if (inputData && inputData.length > 0) {
             inputData.map((item, index) => {
                 let object = {};
-                let labelVi = `${item.lastName} ${item.firstName}`;
-                let labelEn = `${item.firstName} ${item.lastName}`;
+                if (type == 'doctor') {
+                    let labelVi = `${item.lastName} ${item.firstName}`;
+                    let labelEn = `${item.firstName} ${item.lastName}`;
 
-                object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+                    object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+                } else {
+                    object.label = item.name;
+                }
                 object.value = item.id;
+                object.type = type;
+
                 result.push(object);
             });
         }
         return result;
     };
     handleChangeSelect = async (selectedOption) => {
-        this.props.history.push('/detail-doctor/' + selectedOption.value);
+        this.props.history.push('/detail-' + selectedOption.type + '/' + selectedOption.value);
         this.setState({ selectedDoctor: selectedOption });
     };
 
     render() {
         let language = this.props.language;
+        console.log('check state', this.props);
         // let { dataDoctors } = this.state;
         // let { selectedOption } = this.state;
         // console.log('check dataDoctors', dataDoctors);
@@ -179,7 +196,7 @@ class HomeHeader extends Component {
                                     value={this.state.selectedDoctor}
                                     onChange={this.handleChangeSelect}
                                     className="searchDoctor"
-                                    options={this.state.listDoctors}
+                                    options={this.state.listData}
                                 />
                             </div>
 
@@ -262,6 +279,7 @@ const mapStateToProps = (state) => {
         userInfo: state.user.userInfo,
         language: state.app.language,
         allDoctors: state.admin.allDoctors,
+        clinics: state.admin.clinics,
     };
 };
 
@@ -269,6 +287,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         // cachs fire 1 event
         fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
+        fetchAllClinics: () => dispatch(actions.fetchAllClinics()),
+
         // truy cap den ham changeLanguageAppRedux thong qua props
         changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
     };

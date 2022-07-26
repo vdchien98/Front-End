@@ -12,11 +12,11 @@ class About extends Component {
                         <iframe
                             width="100%"
                             height="400px"
-                            src="https://youtu.be/tvHEfX0rU2c"
+                            src="https://www.youtube.com/embed/tvHEfX0rU2c"
                             title="YouTube video player"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullscreen
+                            allowFullScreen
                         ></iframe>
                     </div>
                     <div className="content-right">

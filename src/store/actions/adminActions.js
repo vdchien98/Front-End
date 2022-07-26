@@ -58,8 +58,18 @@ export const fetchPositionStart = () => {
         }
     };
 };
+
 export const fetchPositionSuccess = (positionData) => ({
     type: actionTypes.FETCH_POSITION_SUCCESS,
+    data: positionData, // truyền data qua bên reducers
+});
+export const fetchClinicSuccess = (positionData) => ({
+    type: actionTypes.FETCH_CLINIC_SUCCESS,
+    data: positionData, // truyền data qua bên reducers
+});
+
+export const fetchClinicFaided = (positionData) => ({
+    type: actionTypes.FETCH_CLINIC_FAILDED,
     data: positionData, // truyền data qua bên reducers
 });
 export const fetchPositionFaided = () => ({
@@ -298,6 +308,22 @@ export const fetchAllScheduleTime = () => {
             dispatch({
                 type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILDED,
             });
+        }
+    };
+};
+
+export const fetchAllClinics = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllClinic();
+            if (res && res.errCode === 0) {
+                dispatch(fetchClinicSuccess(res.data));
+            } else {
+                dispatch(fetchClinicFaided());
+            }
+        } catch (e) {
+            dispatch(fetchClinicFaided());
+            console.log('fetchPositionFaided error', e);
         }
     };
 };

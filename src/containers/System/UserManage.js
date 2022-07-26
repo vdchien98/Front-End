@@ -146,10 +146,10 @@ class UserManage extends Component {
                                             <td>{item.address}</td>
                                             <td>
                                                 <button className="btn-edit" onClick={() => this.handleEditUser(item)} type="button">
-                                                    <i class="fas fa-pencil-alt"></i>
+                                                    <i className="fas fa-pencil-alt"></i>
                                                 </button>
                                                 <button className="btn-delete" onClick={() => this.handleDeleteUser(item)} type="button">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i className="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
