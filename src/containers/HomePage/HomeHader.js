@@ -12,6 +12,7 @@ import { saveBulkScheduleDoctor } from '../../services/useService';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router-dom';
 import { getAllSpecialty } from '../../services/useService';
+import { Link } from 'react-router-dom';
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class HomeHeader extends Component {
             selectedDoctor: {},
             listData: [],
             dataSpecialty: [],
+            // isAtHome: true,
         };
     }
     // handleChange = (selectedOption) => {
@@ -93,27 +95,18 @@ class HomeHeader extends Component {
 
     render() {
         let language = this.props.language;
+        let isAtHome = this.state.isAtHome;
         console.log('check state', this.props);
-        // let { dataDoctors } = this.state;
-        // let { selectedOption } = this.state;
-        // console.log('check dataDoctors', dataDoctors);
-        // console.log('check selectedOption', selectedOption);
-
-        // const options = [
-        //     { value: 'chocolate', label: 'Chocolate' },
-        //     { value: 'strawberry', label: 'Strawberry' },
-        //     { value: 'vanilla', label: 'Vanilla' },
-        // ];
-
-        /* Simple example */
-
         return (
             <React.Fragment>
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
                             <i className="fas fa-bars"></i>
-                            <img className="header-logo" src={logo} onClick={() => this.returnToHome()} />
+                            <div className="header-logo" onClick={() => this.returnToHome()}>
+                                Trang chủ{' '}
+                            </div>
+                            {/* <img className="header-logo" src={logo} onClick={() => this.returnToHome()} /> */}
                             <div className="header-logo"></div>
                         </div>
                         <div className="center-content">
@@ -167,8 +160,8 @@ class HomeHeader extends Component {
                         </div>
                         <div className="right-content">
                             <div className="support">
-                                <i className="fas fa-question-circle"></i>
-                                <FormattedMessage id="homeheader.support" />
+                                {/* <i className="fas fa-question-circle"></i>
+                                <FormattedMessage id="homeheader.support" /> */}
                             </div>
                             <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}>
                                 <span onClick={() => this.changeLanguage(LANGUAGES.VI)}>Việt Nam</span>
@@ -182,12 +175,12 @@ class HomeHeader extends Component {
                 {this.props.isShowBanner === true && (
                     <div className="home-header-banner">
                         <div className="content-up">
-                            <div className="title1">
+                            {/* <div className="title1">
                                 <FormattedMessage id="banner.title1" />
                             </div>
                             <div className="title2">
                                 <FormattedMessage id="banner.title2" />
-                            </div>
+                            </div> */}
                             <div className="title3">
                                 <FormattedMessage id="banner.title3" />
                             </div>
@@ -212,7 +205,7 @@ class HomeHeader extends Component {
                              <div></div> */}
                         </div>
                         {/* </div> */}
-                        <div className="content-down">
+                        {/* <div className="content-down">
                             <div className="options">
                                 <div className="option-child">
                                     <div className="icon-child">
@@ -263,7 +256,7 @@ class HomeHeader extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 )}
             </React.Fragment>
