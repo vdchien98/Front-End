@@ -43,7 +43,18 @@ class App extends Component {
     componentDidMount() {
         this.handlePersistorState();
     }
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.userInfo !== this.props.userInfo) {
+            const { isLoggedIn, userInfo } = this.props;
+            if (userInfo) {
+                let link = userInfo.roleId == 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
+                let linkToRedirect = isLoggedIn ? link : '/home';
+                if (history) {
+                    history.push(linkToRedirect);
+                }
+            }
+        }
+    }
     render() {
         return (
             <Fragment>
@@ -69,19 +80,6 @@ class App extends Component {
                                 </Switch>
                             </CustomScrollbars>
                         </div>
-
-                        {/* <ToastContainer
-                            className="toast-container"
-                            toastClassName="toast-item"
-                            bodyClassName="toast-item-body"
-                            autoClose={false}
-                            hideProgressBar={true}
-                            pauseOnHover={false}
-                            pauseOnFocusLoss={true}
-                            closeOnClick={false}
-                            draggable={false}
-                            closeButton={<CustomToastCloseButton />}
-                        /> */}
                         <ToastContainer
                             position="bottom-right"
                             autoClose={5000}
@@ -104,6 +102,7 @@ const mapStateToProps = (state) => {
     return {
         started: state.app.started,
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
     };
 };
 

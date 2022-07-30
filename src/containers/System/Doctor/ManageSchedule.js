@@ -25,6 +25,14 @@ class ManageSchedule extends Component {
     componentDidMount() {
         this.props.fetchAllDoctors();
         this.props.fetchAllScheduleTime();
+        let userInfo = this.props.userInfo;
+        let { language } = this.props;
+        let model = {};
+        let labelVi = `${userInfo.lastName} ${userInfo.firstName}`;
+        let labelEn = `${userInfo.firstName} ${userInfo.lastName}`;
+        model.label = language === LANGUAGES.VI ? labelVi : labelEn;
+        model.value = userInfo.id;
+        this.setState({ selectedDoctor: model });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -45,12 +53,6 @@ class ManageSchedule extends Component {
                 rangeTime: data,
             });
         }
-        // if (prevProps.language !== this.props.language) {
-        //     let dataSelect = this.buildDataInputSelect(this.props.allDoctors);
-        //     this.setState({
-        //         listDoctors: dataSelect,
-        //     });
-        // }
     }
     buildDataInputSelect = (inputData) => {
         let result = [];
@@ -136,7 +138,7 @@ class ManageSchedule extends Component {
     };
     render() {
         let { rangeTime } = this.state;
-        let { language } = this.props;
+        let { language, userInfo } = this.props;
         let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
         return (
@@ -150,7 +152,24 @@ class ManageSchedule extends Component {
                             <label className="">
                                 <FormattedMessage id="manage-schedule.choose-doctor" />
                             </label>
-                            <Select value={this.state.selectedDoctor} onChange={this.handleChangeSelect} options={this.state.listDoctors} />
+                            <select
+                                disabled
+                                className="form-control"
+                                value={this.state.selectedDoctor.value}
+                                onChange={() => {
+                                    this.handleChangeSelect(this.state.selectedDoctor);
+                                }}
+                            >
+                                {this.state.listDoctors &&
+                                    this.state.listDoctors.length > 0 &&
+                                    this.state.listDoctors.map((item, index) => {
+                                        return (
+                                            <option key={index} value={item.value}>
+                                                {item.label}
+                                            </option>
+                                        );
+                                    })}
+                            </select>
                         </div>
                         <div className="col-6">
                             <label className="">
@@ -196,6 +215,7 @@ const mapStateToProps = (state) => {
         language: state.app.language,
         allDoctors: state.admin.allDoctors,
         allScheduleTime: state.admin.allScheduleTime,
+        userInfo: state.user.userInfo,
     };
 };
 

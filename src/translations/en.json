@@ -39,7 +39,8 @@
         },
         "doctor": {
             "manage-schedule": "Manage Doctor's schedule ",
-            "manage-patient": "Manage Doctor's patient"
+            "manage-patient": "Manage Doctor's patient",
+            "user-info": "User Info"
         }
     },
     "manage-user": {
@@ -85,7 +86,7 @@
         "booking-modal": {
             "title": "Information to book a medical appointment",
             "fullName": "First and last name",
-            "phoneNumber": "Phone number",
+            "phonenumber": "Phone number",
             "email": "Email address",
             "address": "Contact address",
             "reason": "Reason for examination",

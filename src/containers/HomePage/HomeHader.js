@@ -92,7 +92,19 @@ class HomeHeader extends Component {
         this.props.history.push('/detail-' + selectedOption.type + '/' + selectedOption.value);
         this.setState({ selectedDoctor: selectedOption });
     };
-
+    handleRedirect() {
+        debugger;
+        const { isLoggedIn, userInfo, history } = this.props;
+        if (userInfo) {
+            let link = userInfo.roleId == 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
+            let linkToRedirect = isLoggedIn ? link : '/login';
+            if (history) {
+                history.push(linkToRedirect);
+            }
+        } else {
+            history.push('/login');
+        }
+    }
     render() {
         let language = this.props.language;
         let isAtHome = this.state.isAtHome;
@@ -102,7 +114,7 @@ class HomeHeader extends Component {
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
-                            <i className="fas fa-bars"></i>
+                            {/* <i className="fas fa-bars"></i> */}
                             <div className="header-logo" onClick={() => this.returnToHome()}>
                                 Trang chủ{' '}
                             </div>
@@ -169,6 +181,13 @@ class HomeHeader extends Component {
                             <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}>
                                 <span onClick={() => this.changeLanguage(LANGUAGES.EN)}>English</span>
                             </div>
+                            <i
+                                className="fas fa-bars"
+                                style={{ marginLeft: '10px', fontSize: '20px', cursor: 'pointer' }}
+                                onClick={() => {
+                                    this.handleRedirect();
+                                }}
+                            ></i>
                         </div>
                     </div>
                 </div>
