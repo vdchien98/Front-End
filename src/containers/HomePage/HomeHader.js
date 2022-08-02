@@ -182,7 +182,7 @@ class HomeHeader extends Component {
                                 <span onClick={() => this.changeLanguage(LANGUAGES.EN)}>English</span>
                             </div>
                             <i
-                                className="fas fa-bars"
+                                className="fas fa-sign-out-alt"
                                 style={{ marginLeft: '10px', fontSize: '20px', cursor: 'pointer' }}
                                 onClick={() => {
                                     this.handleRedirect();
