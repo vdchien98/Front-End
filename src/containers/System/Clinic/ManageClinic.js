@@ -75,7 +75,7 @@ class ManageClinic extends Component {
     render() {
         return (
             <div className="manage-specialty-container">
-                <div className="ms-title">Quản lý phòng khám </div>
+                <div className="ms-title">Quản lý cơ sỏ y tế </div>
 
                 <div className="add-new-specialty row">
                     <div className="col-6 form-group">
