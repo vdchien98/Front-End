@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { postVerifyBookAppointment } from '../../services/useService';
 import HomeHader from '../HomePage/HomeHader';
 import './VerifyEmail.scss';

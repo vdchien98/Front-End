@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './ManageSchedule.scss';
 import { FormattedMessage } from 'react-intl';
-import Select from 'react-select';
 import * as actions from '../../../store/actions';
-import { LANGUAGES, CRUD_ACTIONS, dateFormat } from '../../../utils';
+import { LANGUAGES } from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
-import moment from 'moment';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 import { saveBulkScheduleDoctor } from '../../../services/useService';
@@ -58,7 +56,7 @@ class ManageSchedule extends Component {
         let result = [];
         let { language } = this.props;
         if (inputData && inputData.length > 0) {
-            inputData.map((item, index) => {
+            inputData.forEach((item) => {
                 let object = {};
                 let labelVi = `${item.lastName} ${item.firstName}`;
                 let labelEn = `${item.firstName} ${item.lastName}`;
@@ -111,8 +109,7 @@ class ManageSchedule extends Component {
         if (rangeTime && rangeTime.length > 0) {
             let selectedTime = rangeTime.filter((item) => item.isSelected === true);
             if (selectedTime && selectedTime.length > 0) {
-                selectedTime.map((schedule, index) => {
-                    console.log('check schedule', schedule, index, selectedDoctor);
+                selectedTime.forEach((schedule, index) => {
                     let object = {};
                     object.doctorId = selectedDoctor.value;
                     object.date = formatedDate;
@@ -138,7 +135,7 @@ class ManageSchedule extends Component {
     };
     render() {
         let { rangeTime } = this.state;
-        let { language, userInfo } = this.props;
+        let { language } = this.props;
         let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
         return (

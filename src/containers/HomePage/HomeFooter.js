@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 
 class HomeFooter extends Component {
     render() {
         return (
             <div className="home-footer">
-                <p>
-                    &copy; 2022 Vũ Đăng Chiến More info , please visit. <a href="#"> &#8594; Click here &#8592;</a>
-                </p>
+                &copy; 2022 Vũ Đăng Chiến More info , please visit. <a href="/"> &#8594; Click here &#8592;</a>
             </div>
         );
     }

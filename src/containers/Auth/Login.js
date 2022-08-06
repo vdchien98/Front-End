@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-
-// import * as actions from '../store/actions';
 import * as actions from '../../store/actions';
-
 import './Login.scss';
-import { FormattedMessage } from 'react-intl';
 import { handleLoginApi, forgotPasswordApi } from '../../services/useService';
 
 class Login extends Component {
@@ -95,7 +91,7 @@ class Login extends Component {
         return (
             <div className="login-background">
                 <div className="login-container">
-                    {this.state.type == 'login' && (
+                    {this.state.type === 'login' && (
                         <div className="login-content row">
                             <div className="col-12 text-login">Log In</div>
                             <div className="col-12 form-group login-input">
@@ -155,7 +151,7 @@ class Login extends Component {
                                             type: 'forgot',
                                         });
                                     }}
-                                    href=""
+                                    href="/"
                                 >
                                     Forgot your password ?
                                 </a>
@@ -169,7 +165,7 @@ class Login extends Component {
                             </div>
                         </div>
                     )}
-                    {this.state.type == 'forgot' && (
+                    {this.state.type === 'forgot' && (
                         <div className="login-content row">
                             <div className="col-12 text-login">Quên mật khẩu</div>
                             <div className="col-12 form-group login-input">

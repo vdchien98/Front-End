@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { FormattedMessage } from 'react-intl';
 import './DetailSpecialty.scss';
 import HomeHader from '../../HomePage/HomeHader';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
@@ -37,7 +36,7 @@ class DetailSpecialty extends Component {
                 if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
                     if (arr && arr.length > 0) {
-                        arr.map((item) => {
+                        arr.forEach((item) => {
                             arrDoctorId.push(item.doctorId);
                         });
                     }
@@ -81,7 +80,7 @@ class DetailSpecialty extends Component {
                 if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
                     if (arr && arr.length > 0) {
-                        arr.map((item) => {
+                        arr.forEach((item) => {
                             arrDoctorId.push(item.doctorId);
                         });
                     }
@@ -107,7 +106,7 @@ class DetailSpecialty extends Component {
         let { language } = this.props;
 
         // biến tạo hàm xem thêm
-        let { isShowDetailInfor, extraInfor } = this.state;
+        let { isShowDetailInfor } = this.state;
         return (
             <div className="detail-specialty-container">
                 <HomeHader />

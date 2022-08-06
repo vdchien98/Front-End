@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
@@ -14,11 +15,6 @@ const persistCommonConfig = {
     stateReconciler: autoMergeLevel2,
 };
 
-// const adminPersistConfig = {
-//     ...persistCommonConfig,
-//     key: 'admin',
-//     whitelist: ['isLoggedIn', 'adminInfo'],
-// };
 const userPersistConfig = {
     ...persistCommonConfig,
     key: 'user',
@@ -29,8 +25,7 @@ const appPersistConfig = {
     key: 'app',
     whitelist: ['language'],
 };
-
-export default (history) =>
+const reducer = (history) =>
     combineReducers({
         router: connectRouter(history),
         // admin: persistReducer(adminPersistConfig, adminReducer),
@@ -40,3 +35,4 @@ export default (history) =>
         app: persistReducer(appPersistConfig, appReducer),
         admin: adminReducer,
     });
+export default reducer;

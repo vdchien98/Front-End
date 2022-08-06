@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { FormattedMessage } from 'react-intl';
 import './DetailClinic.scss';
 import HomeHader from '../../HomePage/HomeHader';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import DoctorExtrainfor from '../Doctor/DoctorExtrainfor';
 import ProfileDoctor from '../Doctor/ProfileDoctor';
-import { getAllDetailClinicById, getAllCodeService } from '../../../services/useService';
+import { getAllDetailClinicById } from '../../../services/useService';
 import _ from 'lodash';
-import { LANGUAGES } from '../../../utils';
 
 class DetailClinic extends Component {
     constructor(props) {
@@ -32,7 +29,7 @@ class DetailClinic extends Component {
                 if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorClinic;
                     if (arr && arr.length > 0) {
-                        arr.map((item) => {
+                        arr.forEach((item) => {
                             arrDoctorId.push(item.doctorId);
                         });
                     }
@@ -45,15 +42,13 @@ class DetailClinic extends Component {
         }
     }
 
-    async componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps) {
         if (this.props.language !== prevProps.language) {
         }
     }
 
     render() {
         let { arrDoctorId, dataDetailClinic } = this.state;
-
-        let { language } = this.props;
         return (
             <div className="detail-specialty-container">
                 <HomeHader />

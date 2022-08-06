@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './RemedyModal.scss';
-import { FormattedMessage } from 'react-intl';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { CommonUtils } from '../../../utils';
-import { toast } from 'react-toastify';
-import NumberFormat from 'react-number-format';
-
-import _ from 'lodash';
-import moment from 'moment';
 
 class RemedyModal extends Component {
     constructor(props) {
@@ -55,7 +49,7 @@ class RemedyModal extends Component {
     };
     render() {
         // toggle={}
-        let { isOpenModal, closeRemedyModal, dataModal, sendRemedy } = this.props;
+        let { isOpenModal, closeRemedyModal } = this.props;
 
         return (
             <Modal

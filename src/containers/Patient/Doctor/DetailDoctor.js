@@ -16,6 +16,15 @@ class DetailDoctor extends Component {
         };
     }
     async componentDidMount() {
+        window.fbAsyncInit = function () {
+            window.FB.init({
+                appId: 'xxxxxxxxx',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v3.0',
+            });
+            window.FB.XFBML.parse();
+        };
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
             this.setState({
@@ -30,7 +39,9 @@ class DetailDoctor extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        window.FB.XFBML.parse();
+    }
 
     render() {
         let { language } = this.props;
@@ -73,7 +84,9 @@ class DetailDoctor extends Component {
                             <div dangerouslySetInnerHTML={{ __html: detailDoctor.Markdown.contentHTML }}></div>
                         )}
                     </div>
-                    <div className="comment-doctor"></div>
+                    <div className="comment-doctor container">
+                        <div className="fb-comments" data-href="http://localhost:3001" data-width="" data-numposts="10"></div>
+                    </div>
                 </div>
             </>
         );

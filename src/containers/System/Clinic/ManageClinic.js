@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { FormattedMessage } from 'react-intl';
 import './ManageClinic.scss';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite'; // import style manually
 import 'react-markdown-editor-lite/lib/index.css';
-import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../utils';
+import { CommonUtils } from '../../../utils';
 import { createNewClinic } from '../../../services/useService';
 import { toast } from 'react-toastify';
 const mdParser = new MarkdownIt(/* Markdown-it options */);
