@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
-import logo from '../../assets/logo.svg';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
 import { withRouter } from 'react-router';
-import { searchDoctor } from '../../services/useService';
 import Select from 'react-select';
-import { saveBulkScheduleDoctor } from '../../services/useService';
 import * as actions from '../../store/actions';
-import { Redirect } from 'react-router-dom';
 import { getAllSpecialty } from '../../services/useService';
-import { Link } from 'react-router-dom';
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -70,9 +65,9 @@ class HomeHeader extends Component {
         let result = [];
         let { language } = this.props;
         if (inputData && inputData.length > 0) {
-            inputData.map((item, index) => {
+            inputData.forEach((item) => {
                 let object = {};
-                if (type == 'doctor') {
+                if (type === 'doctor') {
                     let labelVi = `${item.lastName} ${item.firstName}`;
                     let labelEn = `${item.firstName} ${item.lastName}`;
 
@@ -96,7 +91,7 @@ class HomeHeader extends Component {
         debugger;
         const { isLoggedIn, userInfo, history } = this.props;
         if (userInfo) {
-            let link = userInfo.roleId == 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
+            let link = userInfo.roleId === 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
             let linkToRedirect = isLoggedIn ? link : '/login';
             if (history) {
                 history.push(linkToRedirect);
@@ -107,7 +102,6 @@ class HomeHeader extends Component {
     }
     render() {
         let language = this.props.language;
-        let isAtHome = this.state.isAtHome;
         console.log('check state', this.props);
         return (
             <React.Fragment>

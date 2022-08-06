@@ -153,7 +153,7 @@ class UserInfo extends Component {
         let isGetGenders = this.props.isLoadingGender;
         // console.log('dang chien check state from redux', this.state);
 
-        let { email, password, firstName, lastName, phonenumber, address, gender, position, role, avatar } = this.state;
+        let { email, password, firstName, lastName, phonenumber, address, gender, position, role } = this.state;
         return (
             <div className="user-redux-container">
                 <div className="title">Quản lý thông tin cá nhân </div>

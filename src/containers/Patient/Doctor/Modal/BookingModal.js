@@ -11,7 +11,6 @@ import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import { postPatientBookAppointment } from '../../../../services/useService';
 import { toast } from 'react-toastify';
-import NumberFormat from 'react-number-format';
 
 import _ from 'lodash';
 import moment from 'moment';
@@ -39,7 +38,7 @@ class BookingModal extends Component {
         let result = [];
         let language = this.props.language;
         if (data && data.length > 0) {
-            data.map((item) => {
+            data.forEach((item) => {
                 let object = {};
                 object.label = language === LANGUAGES.VI ? item.valueVi : item.valueEn;
                 object.value = item.keyMap;

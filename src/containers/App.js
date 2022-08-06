@@ -15,7 +15,6 @@ import Login from './Auth/Login';
 
 import System from '../routes/System';
 
-import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage.js';
 import CustomScrollbars from '../../src/components/CustomScrollbars';
@@ -47,7 +46,7 @@ class App extends Component {
         if (prevProps.userInfo !== this.props.userInfo) {
             const { isLoggedIn, userInfo } = this.props;
             if (userInfo) {
-                let link = userInfo.roleId == 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
+                let link = userInfo.roleId === 'R1' ? '/system/user-redux' : '/doctor/manage-schedule';
                 let linkToRedirect = isLoggedIn ? link : '/home';
                 if (history) {
                     history.push(linkToRedirect);
