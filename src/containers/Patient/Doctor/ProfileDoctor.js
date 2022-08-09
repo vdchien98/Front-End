@@ -42,7 +42,7 @@ class ProfileDoctor extends Component {
     renderTimeBooking = (dataTime) => {
         let { language } = this.props;
         if (dataTime && !_.isEmpty(dataTime)) {
-            let time = language === LANGUAGES.VI ? dataTime.timeTypeData.ValueVi : dataTime.timeTypeData.valueEn;
+            let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
             let date =
                 language === LANGUAGES.VI
                     ? moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
@@ -71,7 +71,7 @@ class ProfileDoctor extends Component {
         let nameVi = '',
             nameEn = '';
         if (dataProfile && dataProfile.positionData) {
-            nameVi = `${dataProfile.positionData.ValueVi}, ${dataProfile.lastName} ${dataProfile.firstName} `;
+            nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName} `;
             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
         }
         return (
@@ -110,7 +110,7 @@ class ProfileDoctor extends Component {
                         {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.VI && (
                             <NumberFormat
                                 className="currency"
-                                value={dataProfile.Doctor_Infor.priceTypeData.ValueVi}
+                                value={dataProfile.Doctor_Infor.priceTypeData.valueVi}
                                 displayType={'text'}
                                 thousandSeparator={true}
                                 suffix={'VND'}

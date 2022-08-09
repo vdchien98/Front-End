@@ -138,10 +138,10 @@ class ManagePatient extends Component {
                                         {dataPatient && dataPatient.length > 0 ? (
                                             dataPatient.map((item, index) => {
                                                 let time =
-                                                    language === LANGUAGES.VI ? item.timeTypeDataPatient.ValueVi : item.timeTypeDataPatient.valueEn;
+                                                    language === LANGUAGES.VI ? item.timeTypeDataPatient.valueVi : item.timeTypeDataPatient.valueEn;
                                                 let gender =
                                                     language === LANGUAGES.VI
-                                                        ? item.patientData.genderData.ValueVi
+                                                        ? item.patientData.genderData.valueVi
                                                         : item.patientData.genderData.valueEn;
 
                                                 return (

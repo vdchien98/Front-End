@@ -66,7 +66,7 @@ class DoctorExtrainfor extends Component {
                             {extraInfor && extraInfor.priceTypeData && language === LANGUAGES.VI && (
                                 <NumberFormat
                                     className="currency"
-                                    value={extraInfor.priceTypeData.ValueVi}
+                                    value={extraInfor.priceTypeData.valueVi}
                                     displayType={'text'}
                                     thousandSeparator={true}
                                     suffix={'VND'}
@@ -103,7 +103,7 @@ class DoctorExtrainfor extends Component {
                                         {extraInfor && extraInfor.priceTypeData && language === LANGUAGES.VI && (
                                             <NumberFormat
                                                 className="currency"
-                                                value={extraInfor.priceTypeData.ValueVi}
+                                                value={extraInfor.priceTypeData.valueVi}
                                                 displayType={'text'}
                                                 thousandSeparator={true}
                                                 suffix={'VND'}
@@ -124,7 +124,7 @@ class DoctorExtrainfor extends Component {
                             </div>
                             <div className="payment">
                                 <FormattedMessage id="patient.extra-infor-doctor.payment" />
-                                {extraInfor && extraInfor.paymentTypeData && language === LANGUAGES.VI ? extraInfor.paymentTypeData.ValueVi : ''}
+                                {extraInfor && extraInfor.paymentTypeData && language === LANGUAGES.VI ? extraInfor.paymentTypeData.valueVi : ''}
                                 {extraInfor && extraInfor.paymentTypeData && language === LANGUAGES.EN ? extraInfor.paymentTypeData.valueEn : ''}
                             </div>
                             <div className="hide-price">
